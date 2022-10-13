@@ -27,7 +27,7 @@ static void print_vm_area_struct(struct seq_file *file, struct task_struct *task
 static int print_struct(struct seq_file *file, void *data);
 
 
-static ssize_t kmod_write(struct file *file, const char __user *buffer, size_t length, loff_t *ptr_offset) {
+static ssize_t write_structures(struct file *file, const char __user *buffer, size_t length, loff_t *ptr_offset) {
 printk(KERN_INFO "get arguments\n");
 char user_data[BUFFER_SIZE];
 int pid;
@@ -43,7 +43,7 @@ return strlen(user_data);
 
 static struct file_operations fops = {
         .read = seq_read,
-        .write = kmod_write,
+        .write = write_structures,
 };
 
 
